@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir Serie</title>
+</head>
+<body>
+    <h1>Añadir una nueva serie</h1>
+    <form method="post" action="{{ url_for('add_series') }}">
+        <label for="name">Nombre de la serie:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="synopsis">Sinopsis:</label>
+        <textarea id="synopsis" name="synopsis" required></textarea><br>
+
+        <label for="rating">Puntuación (0-10):</label>
+        <input type="number" id="rating" name="rating" min="0" max="10" required><br>
+
+        <label for="genre">Género:</label>
+        <input type="text" id="genre" name="genre" required><br>
+
+        <label for="release_date">Fecha de estreno:</label>
+        <input type="date" id="release_date" name="release_date" required><br>
+
+        <label for="episodes">Número de capítulos:</label>
+        <input type="number" id="episodes" name="episodes" min="1" required><br>
+
+        <label for="duration">Duración de los capítulos (en minutos):</label>
+        <input type="number" id="duration" name="duration" min="1" required><br>
+
+        <label for="category">Categoría:</label>
+        <select id="category" name="category" required>
+            <option value="watchlist">Series que quiero ver</option>
+            <option value="watching">Series que estoy viendo</option>
+            <option value="watched">Series vistas</option>
+        </select><br>
+
+        <button type="submit">Añadir Serie</button>
+    </form>
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

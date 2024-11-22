@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Página principal</title>
+</head>
+<body>
+    <h1>Bienvenido a tu página de series, {{ username }}</h1>
+    <a href="{{ url_for('logout_function') }}">Cerrar sesión</a>
+    <br>
+    <h2>Listado de series</h2>
+
+    <!-- Categoría: Series que quiero ver -->
+    <h3>Series que quiero ver</h3>
+    {% if watchlist %}
+    <ul>
+        {% for serie in watchlist %}
+        <li>
+            <strong>Nombre:</strong> {{ serie.name }}<br>
+            <strong>Sinopsis:</strong> {{ serie.synopsis }}<br>
+            <strong>Puntuación:</strong> {{ serie.rating }}<br>
+            <strong>Género:</strong> {{ serie.genre }}<br>
+            <strong>Fecha de estreno:</strong> {{ serie.release_date }}<br>
+            <strong>Número de capítulos:</strong> {{ serie.episodes }}<br>
+            <strong>Duración de los capítulos:</strong> {{ serie.duration }} minutos
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Aún no has añadido una serie a esta categoría.</p>
+    {% endif %}
+
+    <!-- Categoría: Series que estoy viendo -->
+    <h3>Series que estoy viendo</h3>
+    {% if watching %}
+    <ul>
+        {% for serie in watching %}
+        <li>
+            <strong>Nombre:</strong> {{ serie.name }}<br>
+            <strong>Sinopsis:</strong> {{ serie.synopsis }}<br>
+            <strong>Puntuación:</strong> {{ serie.rating }}<br>
+            <strong>Género:</strong> {{ serie.genre }}<br>
+            <strong>Fecha de estreno:</strong> {{ serie.release_date }}<br>
+            <strong>Número de capítulos:</strong> {{ serie.episodes }}<br>
+            <strong>Duración de los capítulos:</strong> {{ serie.duration }} minutos
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Aún no has añadido una serie a esta categoría.</p>
+    {% endif %}
+
+    <!-- Categoría: Series vistas -->
+    <h3>Series vistas</h3>
+    {% if watched %}
+    <ul>
+        {% for serie in watched %}
+        <li>
+            <strong>Nombre:</strong> {{ serie.name }}<br>
+            <strong>Sinopsis:</strong> {{ serie.synopsis }}<br>
+            <strong>Puntuación:</strong> {{ serie.rating }}<br>
+            <strong>Género:</strong> {{ serie.genre }}<br>
+            <strong>Fecha de estreno:</strong> {{ serie.release_date }}<br>
+            <strong>Número de capítulos:</strong> {{ serie.episodes }}<br>
+            <strong>Duración de los capítulos:</strong> {{ serie.duration }} minutos
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Aún no has añadido una serie a esta categoría.</p>
+    {% endif %}
+
+<a href="{{ url_for('add_series') }}">Añadir nueva serie</a>
+
+</body>
+</html>
+
